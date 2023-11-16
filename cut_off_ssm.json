@@ -6,6 +6,11 @@
       "type": "String",
       "description": "Target username to unlock",
       "default": ""
+    },
+    "Cutoffdate": {
+      "type": "String",
+      "description": "New expiry date of account",
+      "default": ""
     }
   },
   "mainSteps": [
@@ -15,7 +20,7 @@
       "inputs": {
         "runCommand": [
           "",
-          "Unlock-ADAccount -Identity {{Username}}",
+          "Set-ADAccountExpiration -Identity {{Username}} -DateTime "{{Cutoffdate}}"",
           ""
         ]
       }
