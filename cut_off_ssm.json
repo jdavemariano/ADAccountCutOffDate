@@ -20,7 +20,7 @@
       "inputs": {
         "runCommand": [
           "",
-          "Set-ADAccountExpiration -Identity {{Username}} -DateTime "{{Cutoffdate}}"",
+          "Set-ADAccountExpiration -Identity {{Username}} -DateTime {{Cutoffdate}}",
           ""
         ]
       }
