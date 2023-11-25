@@ -42,6 +42,7 @@ if ssm_status_response['StatusDetails'] == 'Success':
 	print(f'User {target_username} account expiration updated to {cutoffdate} on {target_domain}\n')
 
 cmd_output = ssm_status_response.get('StandardOutputContent','')
+print(cmd_output)
 
 with open('command_id_output.txt', 'w') as outfile:
 	outfile.write(cmd_output)
