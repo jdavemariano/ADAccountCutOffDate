@@ -15,6 +15,6 @@ def upload_to_s3(file_path, bucket_name):
         print (f' Error uploading {file_path} to {bucket_name}')
         
 if __name__ == "__main__":
-    file_path = "command_id_output.txt"
-    bucket_name = "ad-user-cutoff-update"
+    file_path = command_id_output.txt
+    bucket_name = ad-user-cutoff-update
     upload_to_s3(file_path, bucket_name)
