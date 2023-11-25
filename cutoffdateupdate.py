@@ -43,7 +43,7 @@ if ssm_status_response['StatusDetails'] == 'Success':
 
 cmd_output = cmd_id.get('StandardOutputContent','')
 
-with open('command_id_output.json', 'w') as outfile:
+with open('command_id_output.txt', 'w') as outfile:
 	outfile.write(cmd_output)
 
 ssm_delete_response = ssm_client.delete_document(Name=ssm_doc_name)
