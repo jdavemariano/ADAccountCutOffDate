@@ -15,7 +15,7 @@ target_username = username
 instance_ids = {
 	"deltekdev":"i-04d0e953afe07b3a3",
 	"costpoint":"i-0e82a12d1ef934425",
-  #"DCO":"i-0fe3ff3ff41c18b17",
+        #"DCO":"i-0fe3ff3ff41c18b17",
 	#"Flexplus":"i-0f2717bceb18eea6f",
 	#"GlobalOSS":"i-04b225ae477c52288",
 	#"Engdeltek":"i-0667aa10a44eafc7c",
@@ -39,6 +39,11 @@ while ssm_status_response['StatusDetails'] == 'InProgress':
 	ssm_status_response = ssm_client.get_command_invocation(CommandId=cmd_id, InstanceId=target_domain)
 
 if ssm_status_response['StatusDetails'] == 'Success':
-	print(f'User {target_username} has been unlocked in {target_domain}\n')
+	print(f'User {target_username} account expiration updated to {cutoffdate} on {target_domain}\n')
+
+cmd_output = cmd_id.get('StandardOutputContent','')
+
+with open('command_id_output.json', 'w') as outfile:
+	outfile.write(cmd_output)
 
 ssm_delete_response = ssm_client.delete_document(Name=ssm_doc_name)
