@@ -21,6 +21,6 @@ def upload_file_to_s3(file_path, bucket_name):
 
 if __name__ == "__main__":
     bucket_name = "ad-user-cutoff-update"
-    file_path = "command_id_output.txt"
+    file_path = "cutoffdate_logs.txt"
     upload_file_to_s3(file_path, bucket_name)
 
