@@ -10,4 +10,4 @@ def upload_to_s3(file_path, bucket_name):
     s3.upload_file(file_path, bucket_name, s3_object_key)
     print(f'Succefully uploaded {file_path} to {bucket_name}/{s3_object_key}')
 
-upload_to_s3(f'{date}-command_id_output.txt", "ad-user-cutoff-update")
+upload_to_s3(f'{date}-command_id_output.txt', "ad-user-cutoff-update")
