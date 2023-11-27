@@ -21,7 +21,7 @@
         "runCommand": [
           "",
           "Set-ADAccountExpiration -Identity {{Username}} -DateTime {{Cutoffdate}}",
-          "{{Username}}",
+          "net user {{Username}}",
           "Get-ADUser -Identity {{Username}} -Properties AccountExpirationDate | Select-Object AccountExpirationDate",
           ""
         ]
