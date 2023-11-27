@@ -44,7 +44,7 @@ if ssm_status_response['StatusDetails'] == 'Success':
 cmd_output = ssm_status_response.get('StandardOutputContent','')
 print(f'{cmd_output}\n')
 
-with open('command_id_output.txt', 'w') as outfile:
+with open('cutoffdatedate_logs.txt', 'w') as outfile:
 	outfile.write(cmd_output)
 
 ssm_delete_response = ssm_client.delete_document(Name=ssm_doc_name)
