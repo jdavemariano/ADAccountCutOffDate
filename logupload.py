@@ -1,4 +1,6 @@
 import boto3
+import os
+import sys
 from datetime import datetime
 
 domain = sys.argv[1]
