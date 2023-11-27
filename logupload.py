@@ -24,10 +24,10 @@ def upload_file_to_s3(file_path, bucket_name):
 
 if __name__ == "__main__":
     # Replace 'your_bucket_name' with your actual S3 bucket name
-    bucket_name = ad-user-cutoff-update
+    bucket_name = "ad-user-cutoff-update"
 
     # Replace 'logs.txt' with your actual file path
-    file_path = command_id_output.txt
+    file_path = "command_id_output.txt"
 
     upload_file_to_s3(file_path, bucket_name)
 
