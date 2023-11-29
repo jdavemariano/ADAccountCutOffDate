@@ -20,11 +20,8 @@
       "inputs": {
         "runCommand": [
           "",
-          "$customAttributeName = 'AutoExpire'",
-          "$customAttributeValue = $true",
           "Set-ADAccountExpiration -Identity {{Username}} -DateTime {{Cutoffdate}}",
-          "Set-AdUser -Identity {{Username}} -Add @{ $customAttributeName = $customAttributeValue }",
-          "Get-ADUser -Identity {{Username}} -Properties DisplayName, EmailAddress, AccountExpirationDate, AutoExpire | Select-Object DisplayName, EmailAddress, AccountExpirationDate, AutoExpire",
+          "Get-ADUser -Identity {{Username}} -Properties DisplayName, EmailAddress, AccountExpirationDate, AutoExpire | Select-Object DisplayName, EmailAddress, AccountExpirationDate",
           ""
         ]
       }
