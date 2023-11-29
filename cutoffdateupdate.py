@@ -15,10 +15,10 @@ target_username = username
 instance_ids = {
 	"deltekdev":"i-04d0e953afe07b3a3",
 	"costpoint":"i-0e82a12d1ef934425",
-        "DCO":"i-0fe3ff3ff41c18b17",
-	"Flexplus":"i-0f2717bceb18eea6f",
-	"GlobalOSS":"i-04b225ae477c52288",
-	"Engdeltek":"i-0667aa10a44eafc7c",
+        "dco":"i-0fe3ff3ff41c18b17",
+	"flexplus":"i-0f2717bceb18eea6f",
+	"globaloss":"i-04b225ae477c52288",
+	"engdeltek":"i-0667aa10a44eafc7c",
 }
 
 target_domain = instance_ids[domain]
@@ -44,7 +44,11 @@ if ssm_status_response['StatusDetails'] == 'Success':
 cmd_output = ssm_status_response.get('StandardOutputContent','')
 print(f'{cmd_output}\n')
 
-with open('cutoffdate_logs.txt', 'w') as outfile:
-	outfile.write(cmd_output)
+if not cmd_output.strip():
+    with open('cutoffdate_logs.txt', 'w') as outfile:
+        outfile.write(f'User {target_username} does not exist on {target_domain}\n')
+else:
+    with open('cutoffdate_logs.txt', 'w') as outfile:
+        outfile.write(cmd_output)
 
 ssm_delete_response = ssm_client.delete_document(Name=ssm_doc_name)
