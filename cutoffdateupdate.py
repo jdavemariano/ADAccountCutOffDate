@@ -39,7 +39,7 @@ while ssm_status_response['StatusDetails'] == 'InProgress':
 	ssm_status_response = ssm_client.get_command_invocation(CommandId=cmd_id, InstanceId=target_domain)
 
 if ssm_status_response['StatusDetails'] == 'Success':
-	print(f'User {target_username} account expiration updated to {cutoffdate} on {target_domain}\n')
+	print(f'User {target_username} account expiration update to {cutoffdate} has been triggered on {target_domain}\n')
 
 cmd_output = ssm_status_response.get('StandardOutputContent','')
 print(f'{cmd_output}\n')
