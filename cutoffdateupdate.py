@@ -44,11 +44,7 @@ if ssm_status_response['StatusDetails'] == 'Success':
 cmd_output = ssm_status_response.get('StandardOutputContent','')
 print(f'{cmd_output}\n')
 
-if not cmd_output.strip():
-    with open('cutoffdate_logs.txt', 'w') as outfile:
-        outfile.write(f'User {target_username} does not exist on {target_domain}\n')
-else:
-    with open('cutoffdate_logs.txt', 'w') as outfile:
-        outfile.write(cmd_output)
+with open('cutoffdate_logs.txt', 'w') as outfile:
+	outfile.write(cmd_output)
 
 ssm_delete_response = ssm_client.delete_document(Name=ssm_doc_name)
