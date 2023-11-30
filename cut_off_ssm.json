@@ -26,7 +26,6 @@
           "    Set-ADAccountExpiration -Identity {{Username}} -DateTime {{Cutoffdate}}",
           "    Set-ADUser -Identity {{Username}} -Title 'AutoExpireEnabled' ",
           "    Get-ADUser -Identity {{Username}} -Properties DisplayName, EmailAddress, AccountExpirationDate, Title | Select-Object DisplayName, EmailAddress, AccountExpirationDate, Title",
-          "    $userExists | Select-Object SamAccountName, DisplayName, EmailAddress, AccountExpirationDate, AutoExpire, Title | Format-Table -AutoSize",
           "} else {",
           "     Write-Host '{{Username}} account does not exist'",
           "}",
