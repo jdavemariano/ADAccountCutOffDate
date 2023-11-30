@@ -21,7 +21,8 @@
         "runCommand": [
           "",
           "Set-ADAccountExpiration -Identity {{Username}} -DateTime {{Cutoffdate}}",
-          "Get-ADUser -Identity {{Username}} -Properties DisplayName, EmailAddress, AccountExpirationDate, AutoExpire | Select-Object DisplayName, EmailAddress, AccountExpirationDate",
+          "Set-ADUser -Identity {{Username}} -Title 'AutoExpireEnabled' ",
+          "Get-ADUser -Identity {{Username}} -Properties DisplayName, EmailAddress, AccountExpirationDate, AutoExpire, Title | Select-Object DisplayName, EmailAddress, AccountExpirationDate, Title",
           ""
         ]
       }
