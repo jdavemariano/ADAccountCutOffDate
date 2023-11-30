@@ -20,9 +20,15 @@
       "inputs": {
         "runCommand": [
           "",
-          "Set-ADAccountExpiration -Identity {{Username}} -DateTime {{Cutoffdate}}",
-          "Set-ADUser -Identity {{Username}} -Title 'AutoExpireEnabled' ",
-          "Get-ADUser -Identity {{Username}} -Properties DisplayName, EmailAddress, AccountExpirationDate, AutoExpire, Title | Select-Object DisplayName, EmailAddress, AccountExpirationDate, Title",
+          "$userExists = Get-ADUser -Filter {SamAccountName -eq '{{username}}'}",
+          "if ($userExists) {",
+          "    Write-Host '{{username}} account exist'",
+          "    Set-ADAccountExpiration -Identity {{Username}} -DateTime {{Cutoffdate}}",
+          "    Set-ADUser -Identity {{Username}} -Title 'AutoExpireEnabled' ",
+          "    Get-ADUser -Identity {{Username}} -Properties DisplayName, EmailAddress, AccountExpirationDate, AutoExpire, Title | Select-Object DisplayName, EmailAddress, AccountExpirationDate, Title",
+          "} else {",
+          "     Write-Host '{{username}} account does not exist'",
+          "}",
           ""
         ]
       }
